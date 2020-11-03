@@ -30,6 +30,7 @@
   28. easeInBounce
   29. easeOutBounce
   30. easeInOutBounce
+
 I used [Easing function cheat sheet](https://easings.net) equtions to develop this project.
 
 ------------------------------------------------
