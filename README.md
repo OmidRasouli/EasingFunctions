@@ -35,10 +35,24 @@ I used [Easing function cheat sheet](https://easings.net) equtions to develop th
 ------------------------------------------------
 
 Just create a `new Timing()` to use `Ease(step, EasingType)`.
-For using `Ease` the first parameter is `step` between 0 and 1 and the second parameter is the type of easing.
+For using `Ease()`, the first parameter is `step` between 0 - 1, the second parameter is the type of easing.
 
 **For example:**
 ```
   var timing = new Timing();
   var value = timing.Ease(0.2f, EasingType.EaseInSin);
 ```
+
+------------------------------------------------
+
+For interpolation between two {numbers, points, colors, quaternions} use `Lerp()` instead of using `Ease()`. `Lerp()` function has two more parameters. The third parameter is `from`, The fourth parameter is `to`.
+
+**For example:**
+```
+  var timing = new Timing();
+  var value = timing.Ease(0.2f, EasingType.EaseInSin, from, to);
+```
+
+------------------------------------------------
+
+#### This project has 2 scenes to show how it works
