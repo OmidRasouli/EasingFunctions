@@ -1,81 +1,81 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timing
+public static class Timing
 {
     public enum EasingType
     {
         EaseInSin, EaseOutSin, EaseInOutSine, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic, EaseInBounce, EaseOutBounce, EaseInOutBounce
     }
-    private float EaseInSin(float x)
+    private static float EaseInSin(float x)
     {
         return 1f - Mathf.Cos((x * Mathf.PI) * 0.5f);
     }
-    private float EaseOutSin(float x)
+    private static float EaseOutSin(float x)
     {
         return Mathf.Sin((x * Mathf.PI) * 0.5f);
     }
-    private float EaseInOutSine(float x)
+    private static float EaseInOutSine(float x)
     {
         return -(Mathf.Cos(Mathf.PI * x) - 1f) * 0.5f;
     }
-    private float EaseInQuad(float x)
+    private static float EaseInQuad(float x)
     {
         return x * x;
     }
-    private float EaseOutQuad(float x)
+    private static float EaseOutQuad(float x)
     {
         return 1f - (1f - x) * (1f - x);
     }
-    private float EaseInOutQuad(float x)
+    private static float EaseInOutQuad(float x)
     {
         return x < 0.5f ? 2f * x * x : 1f - Mathf.Pow(-2f * x + 2f, 2f) * 0.5f;
     }
-    private float EaseInCubic(float x)
+    private static float EaseInCubic(float x)
     {
         return x * x * x;
     }
-    private float EaseOutCubic(float x)
+    private static float EaseOutCubic(float x)
     {
         return 1f - Mathf.Pow(1f - x, 3f);
     }
-    private float EaseInOutCubic(float x)
+    private static float EaseInOutCubic(float x)
     {
         return x < 0.5f ? 4f * x * x * x : 1f - Mathf.Pow(-2f * x + 2f, 3f) * 0.5f;
     }
-    private float EaseInQuart(float x)
+    private static float EaseInQuart(float x)
     {
         return x * x * x * x;
     }
-    private float EaseOutQuart(float x)
+    private static float EaseOutQuart(float x)
     {
         return 1f - Mathf.Pow(1f - x, 4f);
     }
-    private float EaseInOutQuart(float x)
+    private static float EaseInOutQuart(float x)
     {
         return x < 0.5f ? 8f * x * x * x * x : 1f - Mathf.Pow(-2f * x + 2f, 4f) * 0.5f;
     }
-    private float EaseInQuint(float x)
+    private static float EaseInQuint(float x)
     {
         return x * x * x * x * x;
     }
-    private float EaseOutQuint(float x)
+    private static float EaseOutQuint(float x)
     {
         return 1f - Mathf.Pow(1f - x, 5f);
     }
-    private float EaseInOutQuint(float x)
+    private static float EaseInOutQuint(float x)
     {
         return x < 0.5f ? 16f * x * x * x * x * x : 1f - Mathf.Pow(-2f * x + 2f, 5f) * 0.5f;
     }
-    private float EaseInExpo(float x)
+    private static float EaseInExpo(float x)
     {
         return x == 0f ? 0f : Mathf.Pow(2f, 10f * x - 10f);
     }
-    private float EaseOutExpo(float x)
+    private static float EaseOutExpo(float x)
     {
         return x == 1f ? 1f : 1f - Mathf.Pow(2f, -10f * x);
     }
-    private float EaseInOutExpo(float x)
+    private static float EaseInOutExpo(float x)
     {
         if (x == 0f)
             return 0f;
@@ -86,36 +86,36 @@ public class Timing
         else
             return (2f - Mathf.Pow(2f, -20f * x + 10f)) * 0.5f;
     }
-    private float EaseInCirc(float x)
+    private static float EaseInCirc(float x)
     {
         return 1f - Mathf.Sqrt(1f - Mathf.Pow(x, 2f));
     }
-    private float EaseOutCirc(float x)
+    private static float EaseOutCirc(float x)
     {
         return Mathf.Sqrt(1f - Mathf.Pow(x - 1f, 2f));
     }
-    private float EaseInOutCirc(float x)
+    private static float EaseInOutCirc(float x)
     {
         if (x < 0.5f)
             return (1f - Mathf.Sqrt(1f - Mathf.Pow(2f * x, 2f))) * 0.5f;
         else
             return (Mathf.Sqrt(1f - Mathf.Pow(-2f * x + 2f, 2f)) + 1f) * 0.5f;
     }
-    private float EaseInBack(float x)
+    private static float EaseInBack(float x)
     {
         var c1 = 1.70158f;
         var c3 = c1 + 1f;
 
         return c3 * x * x * x - c1 * x * x;
     }
-    private float EaseOutBack(float x)
+    private static float EaseOutBack(float x)
     {
         var c1 = 1.70158f;
         var c3 = c1 + 1f;
 
         return 1f + c3 * Mathf.Pow(x - 1f, 3f) + c1 * Mathf.Pow(x - 1f, 2f);
     }
-    private float EaseInOutBack(float x)
+    private static float EaseInOutBack(float x)
     {
         var c1 = 1.70158f;
         var c2 = c1 * 1.525f;
@@ -125,7 +125,7 @@ public class Timing
         else
             return (Mathf.Pow(2f * x - 2f, 2f) * ((c2 + 1f) * (x * 2f - 2f) + c2) + 2f) * 0.5f;
     }
-    private float EaseInElastic(float x)
+    private static float EaseInElastic(float x)
     {
         var c4 = (2f * Mathf.PI) * 0.33333333333333333f;
 
@@ -136,7 +136,7 @@ public class Timing
         else
             return -Mathf.Pow(2f, 10f * x - 10f) * Mathf.Sin((x * 10f - 10.75f) * c4);
     }
-    private float EaseOutElastic(float x)
+    private static float EaseOutElastic(float x)
     {
         var c4 = (2f * Mathf.PI) * 0.33333333333333333f;
 
@@ -147,7 +147,7 @@ public class Timing
         else
             return Mathf.Pow(2f, -10f * x) * Mathf.Sin((x * 10f - 0.75f) * c4) + 1f;
     }
-    private float EaseInOutElastic(float x)
+    private static float EaseInOutElastic(float x)
     {
         var c5 = (2f * Mathf.PI) / 4.5f;
 
@@ -160,11 +160,11 @@ public class Timing
         else
             return (Mathf.Pow(2f, -20f * x + 10f) * Mathf.Sin((20f * x - 11.125f) * c5)) * 0.5f + 1f;
     }
-    private float EaseInBounce(float x)
+    private static float EaseInBounce(float x)
     {
         return 1f - EaseOutBounce(1f - x);
     }
-    private float EaseOutBounce(float x)
+    private static float EaseOutBounce(float x)
     {
         var n1 = 7.5625f;
         var d1 = 2.75f;
@@ -186,14 +186,14 @@ public class Timing
             return n1 * (x -= 2.625f / d1) * x + 0.984375f;
         }
     }
-    private float EaseInOutBounce(float x)
+    private static float EaseInOutBounce(float x)
     {
         if (x < 0.5f)
             return (1f - EaseOutBounce(1f - 2f * x)) * 0.5f;
         else
             return (1f + EaseOutBounce(2f * x - 1f)) * 0.5f;
     }
-    public float Ease(float time, EasingType easing)
+    public static float Ease(float time, EasingType easing)
     {
         switch (easing)
         {
@@ -262,48 +262,48 @@ public class Timing
         }
     }
 
-    public float Lerp(float step, EasingType easing, float from, float to)
+    public static float Lerp(float step, EasingType easing, float from, float to)
     {
         var val = Ease(step, easing);
         return Mathf.Lerp(from, to, val);
     }
-    public int LerpInt(float step, EasingType easing, int from, int to)
+    public static int LerpInt(float step, EasingType easing, int from, int to)
     {
         var val = Ease(step, easing);
         return Mathf.RoundToInt(Mathf.Lerp(from, to, val));
     }
 
-    public Vector2 Lerp(float step, EasingType easing, Vector2 from, Vector2 to)
+    public static Vector2 Lerp(float step, EasingType easing, Vector2 from, Vector2 to)
     {
         var val = Ease(step, easing);
         return Vector2.Lerp(from, to, val);
     }
 
-    public Vector3 Lerp(float step, EasingType easing, Vector3 from, Vector3 to)
+    public static Vector3 Lerp(float step, EasingType easing, Vector3 from, Vector3 to)
     {
         var val = Ease(step, easing);
         return Vector3.Lerp(from, to, val);
     }
 
-    public Vector4 Lerp(float step, EasingType easing, Vector4 from, Vector4 to)
+    public static Vector4 Lerp(float step, EasingType easing, Vector4 from, Vector4 to)
     {
         var val = Ease(step, easing);
         return Vector4.Lerp(from, to, val);
     }
 
-    public Quaternion Lerp(float step, EasingType easing, Quaternion from, Quaternion to)
+    public static Quaternion Lerp(float step, EasingType easing, Quaternion from, Quaternion to)
     {
         var val = Ease(step, easing);
         return Quaternion.Lerp(from, to, val);
     }
 
-    public Color Lerp(float step, EasingType easing, Color from, Color to)
+    public static Color Lerp(float step, EasingType easing, Color from, Color to)
     {
         var val = Ease(step, easing);
         return Color.Lerp(from, to, val);
     }
 
-    public Color32 Lerp(float step, EasingType easing, Color32 from, Color32 to)
+    public static Color32 Lerp(float step, EasingType easing, Color32 from, Color32 to)
     {
         var val = Ease(step, easing);
         return Color32.Lerp(from, to, val);
