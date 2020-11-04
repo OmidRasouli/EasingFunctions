@@ -1,4 +1,4 @@
-# EasingFunction
+# Easing functions for Unity
  ### Easing functions included:
   1.  EaseInSin
   2.  EaseOutSin
